@@ -1,0 +1,17 @@
+:root {
+    --el-color-primary: #000;
+    --el-bg-color: #ffffff;
+    --el-text-color-primary: #303133;
+    --menu-text-color: #009a61;
+    --el-border-radius: 4px;
+    --el-font-size: 14px;
+}
+
+[data-theme='dark'] {
+    --el-color-primary: #67C23A;
+    --el-bg-color: #1e1e1e;
+    --el-text-color-primary: #f5f5f5;
+    --menu-text-color: #ff9a00;
+    --el-border-radius: 0px;
+    --el-font-size: 16px;
+}

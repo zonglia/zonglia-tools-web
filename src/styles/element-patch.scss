@@ -1,0 +1,13 @@
+// 覆盖 El 组件
+.el-button {
+    border-radius: var(--el-border-radius);
+    font-size: var(--el-font-size);
+}
+
+.el-input__wrapper {
+    border-radius: var(--el-border-radius);
+}
+
+.el-dialog {
+    background-color: var(--el-bg-color);
+}
