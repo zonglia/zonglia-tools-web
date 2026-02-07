@@ -9,6 +9,7 @@ export const constantRoutes = [
     // 首页
     {
         path: "/",
+        name: 'Layout',
         component: Layout,
         redirect: "/index",
         children: [
@@ -16,7 +17,7 @@ export const constantRoutes = [
                 path: "index",
                 component: () => import("@/views/index.vue"),
                 name: "Index",
-                meta: { title: "首页", icon: "dashboard", affix: true }
+                meta: { title: "首页", icon: "home", affix: true }
             }
         ]
     },

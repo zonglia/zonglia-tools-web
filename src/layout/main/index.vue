@@ -1,13 +1,8 @@
 <template>
-  <div class="main-content">
-    <div><NavBar /></div>
-    <div><router-view /></div>
-  </div>
+  <div class="main-content">main</div>
 </template>
 
-<script setup lang="ts">
-import NavBar from "@/layout/navbar/index.vue";
-</script>
+<script setup lang="ts"></script>
 
 <style scoped lang="scss">
 .main-content {
@@ -15,9 +10,10 @@ import NavBar from "@/layout/navbar/index.vue";
   flex-direction: column;
   height: 100%;
   width: 100%;
+  background-color: yellow;
   padding: 0rem 20rem 0 20rem;
   @media (max-width: 992px) {
-     padding: 0rem 1rem 0 1rem;
+    padding: 0rem 1rem 0 1rem;
   }
 }
 </style>

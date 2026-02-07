@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
       Components({
         resolvers: [
           ElementPlusResolver({
-            importStyle: 'sass', // 关键点1：使用 SCSS 样式
+            importStyle: 'sass', // 使用 SCSS 样式
           }),
         ],
       }),
@@ -31,6 +31,13 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src') // 让 @ 代表 src 目录
+      }
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/styles/variable" as *;`,
+        }
       }
     },
     server: {

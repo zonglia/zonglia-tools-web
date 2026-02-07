@@ -20,12 +20,7 @@
       </el-form>
       <template #footer>
         <div class="dialog-footer">
-          <el-button
-            :loading="loading"
-            type="primary"
-            @click="login"
-            style="width: 100%"
-          >
+          <el-button :loading="loading" type="primary" @click="login" style="width: 100%">
             登录
           </el-button>
         </div>
@@ -38,8 +33,12 @@
 import { ref, reactive, computed } from "vue";
 import { ElNotification } from "element-plus";
 
+import { useRouter } from "vue-router"; // 添加路由
+
 // 引入用户相关的小仓库
 import useUserStore from "@/store/modules/user";
+
+const router = useRouter(); // 获取路由实例
 let useStore = useUserStore();
 // 定义变量控制按钮加载效果
 let loading = ref(false);
@@ -49,17 +48,19 @@ const loginForm = reactive({
   password: "888888",
 });
 
+// 接收父组件传递的值的
 const props = defineProps({
   //  v-model 的默认 prop 名称​
   modelValue: {
     type: Boolean,
-    default: false,
+    default: false, // 如果没有传递这个 prop，默认值为 false
   },
 });
 
+// 声明这个组件可以触发一个名为 'update:modelValue' 的事件
+// defineEmits 返回一个 emit 函数，你可以用它来触发事件。
 const emit = defineEmits(["update:modelValue"]);
 
-// 用于实现 ​​v-model双向绑定​​的一个经典且标准的写法，其核心是通过 computed包装一个 ​​可读写的响应式变量​​，实现 ​​子组件与父组件之间双向同步一个布尔值（或其他类型）​​。
 const visible = computed({
   get: () => props.modelValue,
   // 我们通过 emit("update:modelValue", value)，​​向父组件发送一个事件，通知它更新绑定的值​
@@ -73,14 +74,15 @@ const login = async () => {
     // 通知仓库发送登录请求
     //  保证登录成功
     await useStore.userLogin(loginForm);
-    // 4. 跳转到首页并强制刷新
-    window.location.href = "/"; // 使用原生跳转确保完全刷新
+
     // 登录成功提示信息
     ElNotification({
       type: "success",
       message: "登录成功",
     });
-    emit("update:modelValue", false);
+
+    visible.value = false;
+    router.push("/");
   } catch (error) {
     ElNotification({
       type: "error",
