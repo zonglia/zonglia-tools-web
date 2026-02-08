@@ -36,6 +36,7 @@ async function resetToConstantRoutes() {
 }
 
 router.beforeEach(async (to: any, from: any, next) => {
+    document.title = 'ZongLia-' + to.meta.title
     NProgress.start();
     const userStore = useUserStore()
     const hasToken = userStore.token
