@@ -12,7 +12,7 @@ NProgress.configure({
     speed: 500
 })
 
-const whiteList = ['/404', '/401', '/index', '/login', '/test1', '/scraprate', '/costevaluation', '/kindsetting', '/system/user'] // 白名单路由
+const whiteList = ['/404', '/401', '/index', '/scraprate', '/costevaluation', '/kindsetting', '/system/user'] // 白名单路由
 
 // 重置路由为常量路由的函数
 async function resetToConstantRoutes() {

@@ -1,4 +1,3 @@
-// Home主页
 <template>
   <div class="layout_container">
     <div class="layout_sidebar" :class="{ fold: settingStore.fold }">
@@ -99,6 +98,7 @@ const sidebarRouters = computed(() => permissionStore.sidebarRouters);
     top: $base-tabbar-height;
     overflow: auto; // 自适应滚动条
     transition: all 0.3s;
+    padding: 1rem;
     &.fold {
       width: calc(100vw - $base-menu-min-width);
       left: $base-menu-min-width; // Element Plus 折叠后的默认宽度

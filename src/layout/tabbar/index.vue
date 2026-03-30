@@ -1,58 +1,73 @@
 <template>
   <div class="tabbar_container">
-    <div class="tabbar_left">
-      <!-- 动态图标：根据fold状态切换 -->
-      <SvgIcon
-        :name="settingStore.fold ? 'fold' : 'expand'"
-        size="1rem"
-        @click="toggleFold"
-      />
-      <el-breadcrumb :separator-icon="ArrowRight" style="font-size: 1rem">
-        <el-breadcrumb-item
-          v-for="(item, index) in $route.matched"
-          :key="index"
-          v-show="item.meta.title"
-        >
-          <template v-if="item.meta?.icon">
-            <SvgIcon
-              v-if="item.meta?.icon"
-              :name="item.meta.icon"
-              size="14px"
-              style="vertical-align: middle; margin-right: 4px"
-            />
-          </template>
-          {{ item.meta?.title || item.name }}
-        </el-breadcrumb-item>
-      </el-breadcrumb>
-    </div>
-    <div class="tabbar_right">
-      <el-button size="small" :icon="Refresh" circle @click="updateRefresh"></el-button>
-      <el-button size="small" :icon="FullScreen" circle @click="fullScreen"></el-button>
-      <el-button size="small" :icon="Setting" circle></el-button>
-      <img
-        src="../../../public/cat.jpg"
-        style="width: 20px; height: 20px; margin: 0 1rem"
-        alt=""
-      />
+    <div style="display: flex; justify-content: space-between; flex: 6">
+      <div class="tabbar_left">
+        <!-- 动态图标：根据fold状态切换 -->
+        <SvgIcon
+          :name="settingStore.fold ? 'fold' : 'expand'"
+          size="1rem"
+          @click="toggleFold"
+        />
+        <el-breadcrumb :separator-icon="ArrowRight" style="font-size: 1rem">
+          <el-breadcrumb-item
+            v-for="(item, index) in $route.matched"
+            :key="index"
+            v-show="item.meta.title"
+          >
+            <template v-if="item.meta?.icon">
+              <SvgIcon
+                v-if="item.meta?.icon"
+                :name="item.meta.icon"
+                size="14px"
+                style="vertical-align: middle; margin-right: 4px"
+              />
+            </template>
+            {{ item.meta?.title || item.name }}
+          </el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
+      <div class="tabbar_right">
+        <el-button size="small" :icon="Refresh" circle @click="updateRefresh"></el-button>
+        <el-button size="small" :icon="FullScreen" circle @click="fullScreen"></el-button>
+        <el-button size="small" :icon="Setting" circle></el-button>
+        <img
+          src="../../../public/cat.jpg"
+          style="width: 20px; height: 20px; margin: 0 1rem"
+          alt=""
+        />
 
-      <el-dropdown>
-        <span class="el-dropdown-link">
-          admin
-          <el-icon class="el-icon--right">
-            <arrow-down />
-          </el-icon>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item>退出登录</el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+        <el-dropdown>
+          <span class="el-dropdown-link">
+            admin
+            <el-icon class="el-icon--right">
+              <arrow-down />
+            </el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </div>
+    <div
+      style="
+        flex: 4;
+        padding: 0rem 1rem;
+        border-style: solid;
+        border-width: 1px 0;
+        border-color: #d8dce5;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05);
+      "
+    >
+      <TagsView />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import TagsView from "@/layout/components/TagsView/index.vue";
 import {
   ArrowRight,
   ArrowDown,
@@ -90,7 +105,7 @@ const fullScreen = () => {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   /* 线性渐变背景 */
   background: linear-gradient(45deg, #409eff, #67c23a);
   .tabbar_left {

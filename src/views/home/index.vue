@@ -6,7 +6,15 @@
     <div class="wide-card">
       <Card title="qq zone" />
     </div>
-
+    <div class="wide-card">
+      <Card title="密码随机生成" />
+    </div>
+    <div class="wide-card">
+      <Card title="免费音乐" />
+    </div>
+    <div class="wide-card">
+      <Card title="免费影视" />
+    </div>
   </div>
 </template>
 

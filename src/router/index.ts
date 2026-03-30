@@ -18,6 +18,13 @@ export const constantRoutes = [
                 component: () => import("@/views/home/index.vue"),
                 name: "Index",
                 meta: { title: "首页", icon: "home", affix: true }
+            },
+            {
+                path: "pwdGenerator",
+                component: () => import("@/views/tool/PwdGenerator/index.vue"),
+                name: "PwdGenerator",
+                hidden: true,
+                meta: { title: "随机密码生成", icon: "home", affix: true }
             }
         ]
     },
